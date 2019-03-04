@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "@types/react-redux": "^7.0.1",
     "@types/yup": "^0.26.11",
     "formik": "^1.5.1",
     "formik-material-ui": "^0.0.16",
+    "material-ui-dropzone": "^2.3.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-dropzone": "^9.0.0",
