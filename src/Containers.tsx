@@ -1,25 +1,25 @@
-import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
-import { Action } from "typescript-fsa";
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { Action } from 'typescript-fsa';
 
-import { submitForm } from "./actions";
-import PracticeForm, { FormValues } from "./Components";
+import { submitForm } from './actions';
+import PracticeForm, { FormValues } from './components';
 
 interface DispatchProps {
   submit: (values: FormValues) => void;
 }
 
 const mapDispatchToProps = (
-  dispatch: Dispatch<Action<FormValues>>
+  dispatch: Dispatch<Action<FormValues>>,
 ): DispatchProps =>
   bindActionCreators(
     {
-      submit: values => submitForm(values)
+      submit: values => submitForm(values),
     },
-    dispatch
+    dispatch,
   );
 
 export default connect<{}, DispatchProps>(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(PracticeForm);

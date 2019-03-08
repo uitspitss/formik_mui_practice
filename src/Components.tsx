@@ -1,22 +1,22 @@
-import * as React from "react";
-import * as Yup from "yup";
+import * as React from 'react';
+import * as Yup from 'yup';
 
 import {
   FormControlLabel,
   LinearProgress,
   MenuItem,
-  Radio
-} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import { Field, FieldArray, InjectedFormikProps, withFormik } from "formik";
+  Radio,
+} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import { Field, FieldArray, InjectedFormikProps, withFormik } from 'formik';
 import {
   Checkbox,
   CheckboxWithLabel,
   RadioGroup,
   Switch,
-  TextField
-} from "formik-material-ui";
-import { DropzoneArea } from "material-ui-dropzone";
+  TextField,
+} from 'formik-material-ui';
+import { DropzoneArea } from 'material-ui-dropzone';
 
 export interface FormValues {
   text: string;
@@ -46,7 +46,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
   isValid,
   handleSubmit,
   handleChange,
-  setFieldValue
+  setFieldValue,
 }) => (
   <form
     className="practice-form"
@@ -129,7 +129,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
       variant="outlined"
       InputLabelProps={{ shrink: true }}
     >
-      {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((value, index) => (
+      {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((value, index) => (
         <MenuItem key={index} value={value}>
           {value}
         </MenuItem>
@@ -144,7 +144,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
       name="checkboxwithlabel"
       label="checkboxwithlabel"
       component={CheckboxWithLabel}
-      Label={{ label: "checkbox with label" }}
+      Label={{ label: 'checkbox with label' }}
     />
     <br />
 
@@ -165,7 +165,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.onload = (item: any) => {
-          setFieldValue("file_data", item.target.result);
+          setFieldValue('file_data', item.target.result);
         };
 
         reader.readAsDataURL(file);
@@ -174,7 +174,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
 
     <DropzoneArea
       onChange={acceptedFiles => {
-        setFieldValue("files", acceptedFiles);
+        setFieldValue('files', acceptedFiles);
         acceptedFiles.map((f: any, index: number) => {
           const reader = new FileReader();
           reader.onload = (item: any) => {
@@ -190,7 +190,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
       name="extra"
       label="extra"
       component={CheckboxWithLabel}
-      Label={{ label: "extra" }}
+      Label={{ label: 'extra' }}
       values={values.extra.toString()}
       onChange={handleChange}
     />
@@ -222,12 +222,12 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
                   style={{ width: 100 }}
                   InputLabelProps={{ shrink: true }}
                 >
-                  {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(
+                  {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(
                     (value, idx) => (
                       <MenuItem key={idx} value={value}>
                         {value}
                       </MenuItem>
-                    )
+                    ),
                   )}
                 </Field>
                 &nbsp;
@@ -243,7 +243,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
                   type="button"
                   variant="contained"
                   color="primary"
-                  onClick={() => helpers.push("")}
+                  onClick={() => helpers.push('')}
                 >
                   +
                 </Button>
@@ -254,7 +254,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
               type="button"
               variant="contained"
               color="primary"
-              onClick={() => helpers.push("")}
+              onClick={() => helpers.push('')}
             >
               Add a array
             </Button>
@@ -280,30 +280,30 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
 
 export default withFormik<FormProps, FormValues>({
   mapPropsToValues: props => ({
-    text: "hello world",
-    email: "hello_world@example.com",
-    password: "hello___world123",
-    textarea: "multiline\ntextarea",
-    select: "Thu",
-    gender: "male",
+    text: 'hello world',
+    email: 'hello_world@example.com',
+    password: 'hello___world123',
+    textarea: 'multiline\ntextarea',
+    select: 'Thu',
+    gender: 'male',
     switch: true,
     checkbox: true,
     checkboxwithlabel: true,
-    date: "2019-03-05",
-    file: "",
+    date: '2019-03-05',
+    file: '',
     files: [],
     extra: false,
-    array: []
+    array: [],
   }),
   validationSchema: Yup.object().shape({
-    text: Yup.string().required("please input text"),
+    text: Yup.string().required('please input text'),
     email: Yup.string()
-      .email("Email is not valied")
-      .required("Email is required"),
+      .email('Email is not valied')
+      .required('Email is required'),
     password: Yup.string()
-      .min(6, "password has to be longer than 6 characters")
-      .required("password is required"),
-    gender: Yup.string().required("gender has to select one")
+      .min(6, 'password has to be longer than 6 characters')
+      .required('password is required'),
+    gender: Yup.string().required('gender has to select one'),
     // file: Yup.mixed()
     //   .required("Required")
     //   .test(
@@ -317,5 +317,5 @@ export default withFormik<FormProps, FormValues>({
       props.submit(values);
       setSubmitting(false);
     }, 1000);
-  }
+  },
 })(PracticeForm);

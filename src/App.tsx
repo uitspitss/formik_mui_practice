@@ -1,8 +1,8 @@
-import * as React from "react";
-import "./App.css";
-import PracticeForm from "./Containers";
+import * as React from 'react';
+import './App.css';
+import PracticeForm from './containers';
 
-import logo from "./logo.svg";
+import logo from './logo.svg';
 
 class App extends React.Component {
   public render() {
