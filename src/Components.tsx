@@ -13,6 +13,7 @@ import {
   Checkbox,
   CheckboxWithLabel,
   RadioGroup,
+  SimpleFileUpload,
   Switch,
   TextField,
 } from 'formik-material-ui';
@@ -63,6 +64,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
       fullWidth={true}
     />
     <br />
+
     <Field
       name="email"
       label="email *"
@@ -73,6 +75,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
       fullWidth={true}
     />
     <br />
+
     <Field
       name="password"
       label="password *"
@@ -84,6 +87,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
       fullWidth={true}
     />
     <br />
+
     <Field
       name="textarea"
       label="textarea *"
@@ -94,6 +98,33 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
       fullWidth={true}
     />
     <br />
+
+    <Field
+      name="select"
+      label="select *"
+      select={true}
+      component={TextField}
+      variant="outlined"
+      InputLabelProps={{ shrink: true }}
+    >
+      {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((value, index) => (
+        <MenuItem key={index} value={value}>
+          {value}
+        </MenuItem>
+      ))}
+    </Field>
+    <br />
+
+    <Field
+      name="date"
+      label="date *"
+      type="date"
+      InputLabelProps={{ shrink: true }}
+      component={TextField}
+      variant="outlined"
+    />
+    <br />
+
     <Field
       name="gender"
       label="gender *"
@@ -121,21 +152,6 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
       />
     </Field>
     <br />
-    <Field
-      name="select"
-      label="select *"
-      select={true}
-      component={TextField}
-      variant="outlined"
-      InputLabelProps={{ shrink: true }}
-    >
-      {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((value, index) => (
-        <MenuItem key={index} value={value}>
-          {value}
-        </MenuItem>
-      ))}
-    </Field>
-    <br />
     <Field name="switch" label="switch" component={Switch} />
     <br />
     <Field name="checkbox" label="checkbox" component={Checkbox} />
@@ -148,14 +164,7 @@ const PracticeForm: React.FC<InjectedFormikProps<FormProps, FormValues>> = ({
     />
     <br />
 
-    <Field
-      name="date"
-      label="date *"
-      type="date"
-      InputLabelProps={{ shrink: true }}
-      component={TextField}
-      variant="outlined"
-    />
+    <Field component={SimpleFileUpload} name="upload_file" />
     <br />
 
     <Field
